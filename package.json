@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Lauxx/Bear-API#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.15.0", //body-parser added;
+    "express": "^4.13.4"//express added; 
   }
 }
+//can add by hand and then just npm install - will add;
