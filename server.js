@@ -35,8 +35,11 @@ app.post('/api/bear', function(req, res){
 })
 
 app.get('/api/bear/:id', function(req, res){
-	var id = req.params.id;//make sure what you are comparing is same typeof (Number, string)
-	console.log(id);//request.params comes from express; make it easy to parse out id
+	var id = req.params.id;
+	//make sure what you are comparing is same typeof (Number, string)
+	//request.params comes from express; make it easy to parse out id
+	console.log(id); //logs to terminal
+
 
 	var newwerBear = ''//set to empty string
 	allBears.forEach(function(individualBear) {
@@ -44,7 +47,25 @@ app.get('/api/bear/:id', function(req, res){
 			newwerBear = individualBear;
 		}
 	})
-	res.json(newwerBear)//needs to be outside of forEach loop;
+	res.json(newwerBear)//needs to be outside of forEach loop; otherwise the response will
+	//timeout and not finish the call.
+})
+
+app.delete('/api/bear/:id', function(req, res){
+	var id = req.params.id;
+
+	console.log(id);
+
+	var deleteBear=''
+	var index = ''
+	allBears.forEach(function(bear){
+		if(bear.id.toString() === id.toString()){
+			deleteBear = bear;
+			index = allBears.indexOf(deleteBear);
+			
+		}
+	})
+	res.json(allBears.splice(index, 1))
 })
 
 
